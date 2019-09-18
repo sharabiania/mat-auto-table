@@ -1,0 +1,40 @@
+<div class="mat-elevation-z2">
+	<mat-spinner *ngIf="inProgress" style="margin:0 auto;"></mat-spinner>
+	<mat-toolbar *ngIf="error && !inProgress" color="primary">{{error}}</mat-toolbar>
+	<mat-toolbar *ngIf="!isVisible && !inProgress && !error">No records to show.</mat-toolbar>
+	<div [style.visibility]="(!inProgress && isVisible)?'visible':'hidden'">
+		<mat-form-field>
+			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" />
+		</mat-form-field>
+
+		<div class='porsa-table-container'>
+			<table mat-table [dataSource]="matTableDatasource" matSort>
+				<ng-container matColumnDef="select">
+					<th mat-header-cell *matHeaderCellDef>
+						<mat-checkbox (change)="$event ? masterToggle() : null"
+							[checked]="selection.hasValue() && isAllSelected()"
+							[indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+						</mat-checkbox>
+					</th>
+					<td mat-cell *matCellDef="let row">
+						
+						<mat-checkbox (click)="$event.stopPropagation()"
+							(change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+							[aria-label]="checkboxLabel(row)">
+						</mat-checkbox>
+					</td>
+				</ng-container>
+				<ng-container [matColumnDef]="col" *ngFor="let col of dataColumns">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>{{col.toUpperCase()}}</th>
+					<td mat-cell *matCellDef="let element">{{element[col]}}</td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayColumns;" (click)="rowClicked(row)"></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[10, 20, 50]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+		</div>
+
+	</div>
+
+</div>

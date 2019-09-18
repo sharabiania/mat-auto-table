@@ -1,0 +1,11 @@
+td.mat-cell, th.mat-header-cell {
+	padding:10px;
+}
+table {
+	width: 100%;
+}
+.porsa-table-container{
+	overflow: auto;
+	padding: 5px;
+	display:block;
+}
