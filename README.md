@@ -12,26 +12,27 @@ Automatically generated Angular Material Table from data: Just need to load JSON
 ```<auto-table selectionMode="true" hiddenColumns="['id']"></auto-table>```
 
 - In .ts:
-1 - Get an instance:
-``` 	
-     /* Get an instance */
-     @ViewChild(AutoTableComponent, { static: false }) table!: AutoTableComponent;
-```
-2 - Initialize:
-```
-      /* Initialize */
-      ngAfterViewInit(): void {
-          this.table.apiUrl = 'api/Stocks/';
-          this.table.rowClickCb = (row => {
-            console.log('clicked:', row);
-          });
-        }
-```
 
-3 - Load from an API call:
-```
-     /* Load from server  *?
-     this.table.loadFromServer('GetStock', { status: this.selectedStatus, warehouse: this.warehouse });
-```
+     1 - Get an instance:
+     ``` 	
+          /* Get an instance */
+          @ViewChild(AutoTableComponent, { static: false }) table!: AutoTableComponent;
+     ```
+     2 - Initialize:
+     ```
+           /* Initialize */
+           ngAfterViewInit(): void {
+               this.table.apiUrl = 'api/Stocks/';
+               this.table.rowClickCb = (row => {
+                 console.log('clicked:', row);
+               });
+             }
+     ```
+
+     3 - Load from an API call:
+     ```
+          /* Load from server  *?
+          this.table.loadFromServer('GetStock', { status: this.selectedStatus, warehouse: this.warehouse });
+     ```
         
       
