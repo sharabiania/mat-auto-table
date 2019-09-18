@@ -6,6 +6,9 @@ Automatically generated Angular Material Table from data: Just need to load JSON
 - Row selection.
 - Row click events.
 - Show/hide columns.
+- Shows spinner while the data is loading from the API call.
+- Shows error message if the API call is not sucessfull.
+- Shows empty table message, if there are no records.
 
 # How to use:
 - In html:
