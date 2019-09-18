@@ -31,8 +31,11 @@ Automatically generated Angular Material Table from data: Just need to load JSON
 
      3 - Load from an API call:
      ```
-          /* Load from server  *?
-          this.table.loadFromServer('GetStock', { status: this.selectedStatus, warehouse: this.warehouse });
+          /* With no query strings: */
+          this.table.loadFromServer('GetStock');
+     
+          /* With query strings:  */
+          this.table.loadFromServer('GetStock', { status: 1, name: 'testQuery' });
      ```
         
       
